@@ -1,5 +1,5 @@
 from django.views.generic import TemplateView, ListView, DetailView
-from django.shortcuts import get_list_or_404
+from django.shortcuts import get_object_or_404
 from .models import Specialty, Vacancy, Company
 from django.db.models import Count
 from django.http import Http404, HttpResponseNotFound, HttpResponseServerError
@@ -29,13 +29,21 @@ class ListCategoryView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(ListCategoryView, self).get_context_data(**kwargs)
-        context["title"] = Specialty.objects.get(code=self.kwargs["pk"]).title
+        context["title"] = get_object_or_404(Specialty, code=self.kwargs["pk"]).title
         context["object_list"] = Vacancy.objects.filter(specialty__title=context["title"])
         return context
 
 
 class ListCompanyView(ListView):
-    template_name = "vacancies/company.html"
+    model = Vacancy
+    template_name = "vacancies/company_list.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(ListCompanyView, self).get_context_data(**kwargs)
+        context["company"] = get_object_or_404(Company, id=self.kwargs["pk"])
+        context["object_list"] = Vacancy.objects.filter(company__id=self.kwargs["pk"])
+        return context
+
 
 
 class DetailVacancyView(DetailView):

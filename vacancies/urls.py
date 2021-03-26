@@ -8,6 +8,7 @@ urlpatterns = [
     path("vacancies/cat/<str:pk>/", views.ListCategoryView.as_view(), name="category"),
     path("companies/<int:pk>", views.ListCompanyView.as_view(), name="company"),
     path("vacancies/<int:pk>", views.DetailVacancyView.as_view(), name="vacancy"),
+
     ]
 
 handler404 = views.custom_handler404

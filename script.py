@@ -5,7 +5,7 @@ import json
 os.environ["DJANGO_SETTINGS_MODULE"] = 'conf.settings'
 django.setup()
 
-from django.shortcuts import get_list_or_404
+from django.shortcuts import get_object_or_404
 from vacancies.models import Specialty, Company, Vacancy
 from django.db.models import Count
 
@@ -18,12 +18,9 @@ if __name__ == "__main__":
     #for vacancy in vacancies:
     #    print(vacancy.title, vacancy.specialty.title, vacancy.skills, vacancy.company.name, vacancy.company.location,
     #          vacancy.published_at, vacancy.salary_min, vacancy.salary_max, vacancy.company.logo)
-    title = Specialty.objects.get(code="backend").title
-    print(title)
-    vacancies = Vacancy.objects.filter(specialty__title="Бэкенд")
-    for vacancy in vacancies:
-        print(vacancy.title, vacancy.specialty.title, vacancy.company.logo)
-    print(vacancies)
+    company = get_object_or_404(Specialty, id=1).title
+    print(company)
+
 
 
 
