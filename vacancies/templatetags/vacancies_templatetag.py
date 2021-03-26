@@ -18,9 +18,11 @@ def ru_pluralize(number: Union[int, str], arg: str = "вакансия,вака�
         return f"{number} {genitive_singular}"
     return f"{number} {genitive_plural}"
 
+
 @register.filter
 def human_readable_salary(value):
     return f'{value:,}'.replace(',', ' ')
+
 
 @register.filter
 def to_list(value):

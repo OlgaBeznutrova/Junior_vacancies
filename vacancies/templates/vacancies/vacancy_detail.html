@@ -11,18 +11,20 @@
         </div>
         <div class="col-12 col-lg-8">
             <section class="pl-3">
-                <a href="#"><img src="../static/vacancies/png/{{ vacancy.company.logo }}" width="130" height="80" alt=""></a>
+                <a href="#"><img src="../static/vacancies/png/{{ vacancy.company.logo }}" width="130" height="80"
+                                 alt=""></a>
                 <div class="d-flex align-items-baseline align-content-baseline">
                     <h1 class="h2 mt-4 font-weight-bold">{{ vacancy.title }}</h1>
-                    <p class="m-0 pl-3">{{ vacancy.salary_min|human_readable_salary }} – {{ vacancy.salary_max|human_readable_salary }} Р</p>
+                    <p class="m-0 pl-3">{{ vacancy.salary_min|human_readable_salary }} –
+                        {{ vacancy.salary_max|human_readable_salary }} Р</p>
                 </div>
                 <p class="mt-2">{{ vacancy.specialty.title }} • {{ vacancy.skills|to_list|join:" • " }}</p>
-                <p class="text-muted mb-4">{{ vacancy.company.name }} ({{ vacancy.company.employee_count|ru_pluralize:"человек,человека,человек" }}), {{ vacancy.company.location }} или удаленно</p>
+                <p class="text-muted mb-4">{{ vacancy.company.name }}
+                    ({{ vacancy.company.employee_count|ru_pluralize:"человек,человека,человек" }}),
+                    {{ vacancy.company.location }} или удаленно</p>
                 <div style="line-height: 1.8;">
                     <p>{{ vacancy.company.description }}</p>
                     {{ vacancy.text|safe }}
-
-
                 </div>
                 <form action="/echo" class="card mt-4 mb-3" enctype="multipart/form-data">
                     <div class="card-body mx-3">

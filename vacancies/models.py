@@ -6,8 +6,8 @@ class Specialty(models.Model):
     title = models.CharField(max_length=100)
     picture = models.URLField(default="https://place-hold.it/100x60")
 
-#    def __str__(self):
-#        return f"{self.id} {self.code}"
+    def __str__(self):
+        return self.code
 
 
 class Company(models.Model):
@@ -16,6 +16,9 @@ class Company(models.Model):
     logo = models.URLField(default="https://place-hold.it/100x60")
     description = models.TextField(max_length=1000)
     employee_count = models.PositiveIntegerField()
+
+    def __str__(self):
+        return f"{self.name}{self.location}"
 
 
 class Vacancy(models.Model):
@@ -27,3 +30,6 @@ class Vacancy(models.Model):
     salary_min = models.PositiveIntegerField()
     salary_max = models.PositiveIntegerField()
     published_at = models.DateField()
+
+    def __str__(self):
+        return self.title

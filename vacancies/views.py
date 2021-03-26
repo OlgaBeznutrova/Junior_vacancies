@@ -1,8 +1,9 @@
-from django.views.generic import TemplateView, ListView, DetailView
-from django.shortcuts import get_object_or_404
-from .models import Specialty, Vacancy, Company
 from django.db.models import Count
 from django.http import HttpResponseNotFound, HttpResponseServerError
+from django.shortcuts import get_object_or_404
+from django.views.generic import TemplateView, ListView, DetailView
+
+from .models import Specialty, Vacancy, Company
 
 
 class HomePageView(TemplateView):
@@ -43,7 +44,6 @@ class ListCompanyView(ListView):
         context["company"] = get_object_or_404(Company, id=self.kwargs["pk"])
         context["object_list"] = Vacancy.objects.filter(company__id=self.kwargs["pk"])
         return context
-
 
 
 class DetailVacancyView(DetailView):
