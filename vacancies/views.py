@@ -2,7 +2,7 @@ from django.views.generic import TemplateView, ListView, DetailView
 from django.shortcuts import get_object_or_404
 from .models import Specialty, Vacancy, Company
 from django.db.models import Count
-from django.http import Http404, HttpResponseNotFound, HttpResponseServerError
+from django.http import HttpResponseNotFound, HttpResponseServerError
 
 
 class HomePageView(TemplateView):
