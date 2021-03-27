@@ -31,7 +31,7 @@ class ListCategoryView(ListView):
     def get_context_data(self, **kwargs):
         context = super(ListCategoryView, self).get_context_data(**kwargs)
         context["title"] = get_object_or_404(Specialty, code=self.kwargs["pk"]).title
-        context["object_list"] = Vacancy.objects.filter(specialty__title=context["title"])
+        context["vacancy_list"] = Vacancy.objects.filter(specialty__title=context["title"])
         return context
 
 
@@ -42,7 +42,7 @@ class ListCompanyView(ListView):
     def get_context_data(self, **kwargs):
         context = super(ListCompanyView, self).get_context_data(**kwargs)
         context["company"] = get_object_or_404(Company, id=self.kwargs["pk"])
-        context["object_list"] = Vacancy.objects.filter(company__id=self.kwargs["pk"])
+        context["vacancy_list"] = Vacancy.objects.filter(company__id=self.kwargs["pk"])
         return context
 
 

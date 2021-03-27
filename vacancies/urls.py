@@ -10,6 +10,3 @@ urlpatterns = [
     path("vacancies/<int:pk>", views.DetailVacancyView.as_view(), name="vacancy"),
 
 ]
-
-handler404 = views.custom_handler404
-handler500 = views.custom_handler500

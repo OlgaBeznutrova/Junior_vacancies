@@ -6,7 +6,7 @@
     <section>
         <h1 class="h1 text-center mx-auto mt-4 pt-5" style="font-size: 70px;"><strong>{{ title }}</strong></h1>
         <p class="text-center pt-1">
-            {{ object_list|length|ru_pluralize:"вакансия,вакансии,вакансий" }}</p>
+            {{ vacancy_list|length|ru_pluralize:"вакансия,вакансии,вакансий" }}</p>
 
         {% include "vacancies/card_of_vacancy.html" %}
 
