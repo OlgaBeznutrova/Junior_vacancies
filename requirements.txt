@@ -5,6 +5,7 @@ attrs==20.3.0
 cognitive-complexity==1.2.0
 colorama==0.4.4
 Django==3.1.7
+django-debug-toolbar==3.2
 eradicate==2.0.0
 flake8==3.9.0
 flake8-blind-except==0.2.0

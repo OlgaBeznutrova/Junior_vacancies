@@ -25,22 +25,21 @@ class ListVacanciesView(ListView):
         return context
 
 
-class ListCategoryView(ListView):
-    model = Vacancy
+class CategoryView(TemplateView):
+    template_name = "vacancies/vacancy_list.html"
 
     def get_context_data(self, **kwargs):
-        context = super(ListCategoryView, self).get_context_data(**kwargs)
+        context = super(CategoryView, self).get_context_data(**kwargs)
         context["title"] = get_object_or_404(Specialty, code=self.kwargs["pk"]).title
         context["vacancy_list"] = Vacancy.objects.filter(specialty__title=context["title"])
         return context
 
 
-class ListCompanyView(ListView):
-    model = Vacancy
-    template_name = "vacancies/company_list.html"
+class CompanyView(TemplateView):
+    template_name = "vacancies/company.html"
 
     def get_context_data(self, **kwargs):
-        context = super(ListCompanyView, self).get_context_data(**kwargs)
+        context = super(CompanyView, self).get_context_data(**kwargs)
         context["company"] = get_object_or_404(Company, id=self.kwargs["pk"])
         context["vacancy_list"] = Vacancy.objects.filter(company__id=self.kwargs["pk"])
         return context
