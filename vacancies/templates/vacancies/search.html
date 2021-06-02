@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load vacancies_tags %}
+
+{% block title %}
+{{ block.super }} | Поиск
+{% endblock %}
+
+{% block content %}
+<main class="container mt-3">
+    <section>
+        <h1 class="h1 text-center mt-5 mb-4">Поиск вакансий</h1>
+        <div class="row">
+            <div class="mx-auto">
+                <form method="get" class="form-inline sm-form mr-auto mb-4">
+                    <input type="text" name="s" placeholder="Backend" class="form-control mr-sm-2">
+                    <button class="btn btn-primary my-0" type="submit">Найти вакансии</button>
+                </form>
+            </div>
+        </div>
+        <p class="text-center pt-1">Найдено {{ count_vacancies|ru_pluralize:"вакансия,вакансии,вакансий" }}</p>
+
+        {% include "vacancies/included/_vacancy.html" %}
+
+    </section>
+</main>
+{% endblock %}
