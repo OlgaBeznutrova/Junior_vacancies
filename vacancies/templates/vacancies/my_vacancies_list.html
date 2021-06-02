@@ -30,11 +30,10 @@ background-color: #F6F2E6;
                             <div class="card-body px-4">
                                 <div class="row align-items-center">
                                     <div class="col-6 col-lg-8">
-                                        <!-- <a href="#" class="mb-1">{{ vacancy.title }}</a> -->
-                                         <h4>{{ vacancy.title }}</h4>
+                                        <h4>{{ vacancy.title }}</h4>
                                         <p class="mb-1">
-                                            <span class="mr-4">{{ vacancy.salary_min|human_readable_salary }} руб.</span><a
-                                                href="#" class="text-info">3 отклика</a>
+                                            <span class="mr-4">{{ vacancy.views|ru_pluralize:"просмотр,просмотра,просмотров" }}</span>
+                                            <a href="{% url 'vacancy_update' vacancy.pk  %}#applications" class="text-info">{{ vacancy.cnt|ru_pluralize:"отклик,отклика,откликов" }}</a>
                                         </p>
                                     </div>
                                     <div class="col-6 col-lg-4 text-right">

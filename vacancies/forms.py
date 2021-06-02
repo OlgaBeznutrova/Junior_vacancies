@@ -1,6 +1,8 @@
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Layout, Submit, Row, Column
 from django import forms
 
-from .models import Company, Vacancy, Application
+from .models import Company, Vacancy, Application, Resume
 
 
 class CompanyForm(forms.ModelForm):
@@ -51,3 +53,34 @@ class ApplicationForm(forms.ModelForm):
         error_messages = {
             "written_phone": {"invalid": "Неверный формат номера, используйте +X XXX XXX XX XX"},
         }
+
+
+class ResumeForm(forms.ModelForm):
+    class Meta:
+        model = Resume
+        exclude = ("id", "created_at", "updated_at", "user")
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.fields["salary"].label = "Ожидаемое вознаграждение"
+        self.fields["portfolio"].label = "Ссылка на портфолио"
+        self.fields['education'].widget = forms.Textarea(attrs={'rows': 3})
+        self.helper.layout = Layout(
+            Row(
+                Column("name"),
+                Column("surname"),
+            ),
+            Row(
+                Column("status"),
+                Column("salary"),
+            ),
+            Row(
+                Column("specialty"),
+                Column("grade"),
+            ),
+            "education",
+            "experience",
+            "portfolio",
+            Submit("submit", "Сохранить", css_class='btn-info'),
+        )

@@ -5,7 +5,9 @@ attrs==20.3.0
 cognitive-complexity==1.2.0
 colorama==0.4.4
 Django==3.1.7
+django-crispy-forms==1.11.2
 django-debug-toolbar==3.2
+django-phonenumber-field==5.0.0
 eradicate==2.0.0
 flake8==3.9.0
 flake8-blind-except==0.2.0
@@ -23,6 +25,8 @@ iniconfig==1.1.1
 mccabe==0.6.1
 mr-proper==0.0.6
 packaging==20.9
+phonenumbers==8.12.20
+Pillow==8.2.0
 pluggy==0.13.1
 py==1.10.0
 pycodestyle==2.7.0

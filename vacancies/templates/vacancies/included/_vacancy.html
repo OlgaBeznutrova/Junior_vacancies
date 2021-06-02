@@ -1,4 +1,5 @@
 {% load vacancies_tags %}
+
 <div class="row mt-5">
     <div class="col-12 col-lg-8 offset-lg-2 m-auto">
         {% for vacancy in vacancies %}
@@ -20,6 +21,20 @@
                 </div>
             </div>
         </div>
+        {% empty %}
+            <div class="row mt-5">
+                <div class="m-auto">
+                    <p>По вашему запросу ничего не найдено.</p>
+                </div>
+            </div>
         {% endfor %}
+
+        <div class="row mt-5">
+            <div class="m-auto">
+                {% include "included/_pagination.html" %}
+            </div>
+        </div>
     </div>
 </div>
+
+
